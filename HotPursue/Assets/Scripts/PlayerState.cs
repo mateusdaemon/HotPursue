@@ -47,4 +47,6 @@ public class PlayerState : MonoBehaviour
                 break;
         }
     }
+
+    public State GetState() { return state; }
 }
