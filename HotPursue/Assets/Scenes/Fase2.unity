@@ -12672,7 +12672,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 10
-  m_Color: {r: 0.22756124, g: 0.18801177, b: 0.6132076, a: 1}
+  m_Color: {r: 0.19496614, g: 0.22628872, b: 0.7433963, a: 1}
   m_Origin: {x: -2, y: -33, z: 0}
   m_Size: {x: 4, y: 33, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -13282,7 +13282,7 @@ Transform:
   m_GameObject: {fileID: 1501343138}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.430084, y: 10.58406, z: -10}
+  m_LocalPosition: {x: 6.4300847, y: 10.58406, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
