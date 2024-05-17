@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8748500635895502882}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,8 +169,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.11, y: -0.35}
-  m_Size: {x: 0.98, y: 1.96}
+  m_Offset: {x: -0.05831877, y: -0.40168077}
+  m_Size: {x: 0.46319008, y: 1.3988928}
   m_Direction: 0
 --- !u!114 &7131271969218304274
 MonoBehaviour:
@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24413bd725127d42915348a6a1d5c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 3
 --- !u!114 &8748500635895502882
 MonoBehaviour:
   m_ObjectHideFlags: 0
