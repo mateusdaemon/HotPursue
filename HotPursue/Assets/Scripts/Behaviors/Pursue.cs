@@ -6,7 +6,8 @@ public class Pursue : MonoBehaviour {
     Rigidbody2D rb;
     Rigidbody2D targetRb;
 
-    public GameObject target;  //< -------
+    private GameObject target;
+    private EnemyState enemyState;
 	Vector2 targetPos;
 
     Vector2 direction;
@@ -20,13 +21,23 @@ public class Pursue : MonoBehaviour {
 
     private void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         targetRb = target.GetComponent<Rigidbody2D>();
+        enemyState = GetComponent<EnemyState>();
     }
 
     private void Update()
 	{
         targetPos = GetTargetFuturePosition();
+
+        if (target.transform.position.x > transform.position.x)
+        {
+            enemyState.ChangeState(State.RunR);
+        } else
+        {
+            enemyState.ChangeState(State.RunL);
+        }
 
         direction = (targetPos - (Vector2)transform.position).normalized;
         desired_velocity = direction * speed;
