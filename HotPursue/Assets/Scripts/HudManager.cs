@@ -21,7 +21,7 @@ public class HudManager : MonoBehaviour
 
     public void SetGold(int coins)
     {
-        goldTxt.text = "Gold: " + coins;
+        goldTxt.text = "Gold:" + coins + "/10";
     }
 
     public void SetLives(int lives)

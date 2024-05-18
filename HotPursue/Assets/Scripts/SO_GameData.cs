@@ -7,7 +7,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class SO_GameData : ScriptableObject, ISerializationCallbackReceiver
 {
-    public int lives = 5;
+    public int lives = 10;
     public int gold = 0;
 
     public void OnAfterDeserialize()
