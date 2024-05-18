@@ -19,15 +19,28 @@ public class Seek : MonoBehaviour
     Vector2 steering_velocity;
     public float mass = 10;
 
+    private EnemyState enemyState;
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player");
+        enemyState = GetComponent<EnemyState>();
     }
 
     private void Update()
     {
         targetPosition = target.transform.position;
+
+        if (targetPosition.x > transform.position.x)
+        {
+            enemyState.ChangeState(State.RunR);
+        }
+        else
+        {
+            enemyState.ChangeState(State.RunL);
+        }
 
         // ========================================================
         direction = ((Vector3)targetPosition - transform.position).normalized;
@@ -51,5 +64,4 @@ public class Seek : MonoBehaviour
         float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
         transform.eulerAngles = new Vector3(0, 0, angle);
     }
-
 }

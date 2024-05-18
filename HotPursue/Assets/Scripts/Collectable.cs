@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
+    private GameManager gameManager;
+    public int worth;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = FindObjectOfType<GameManager>();   
     }
 
     // Update is called once per frame
@@ -20,6 +22,7 @@ public class Collectable : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            gameManager.AddScore(worth);
             Destroy(gameObject);
         }
     }

@@ -19,5 +19,15 @@ public class HudManager : MonoBehaviour
         
     }
 
+    public void SetGold(int coins)
+    {
+        goldTxt.text = "Gold: " + coins;
+    }
+
+    public void SetLives(int lives)
+    {
+        lifeTxt.text = "Lives: " + lives;
+    }
+
 
 }
