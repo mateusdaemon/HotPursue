@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class EnemyState : MonoBehaviour
 {
     private State state;

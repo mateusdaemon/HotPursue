@@ -20,6 +20,9 @@ public class Seek : MonoBehaviour
     public float mass = 10;
 
     private EnemyState enemyState;
+    private bool goToPlayer = false;
+    public float checkRadios;
+    public LayerMask whatIsPlayer;
 
 
     private void Start()
@@ -31,25 +34,35 @@ public class Seek : MonoBehaviour
 
     private void Update()
     {
-        targetPosition = target.transform.position;
-
-        if (targetPosition.x > transform.position.x)
+        if (!goToPlayer)
         {
-            enemyState.ChangeState(State.RunR);
-        }
-        else
+            Collider2D playerRef = Physics2D.OverlapCircle(transform.position, checkRadios, whatIsPlayer);
+            if (playerRef)
+            {
+                goToPlayer = true;
+            }
+        } else
         {
-            enemyState.ChangeState(State.RunL);
+            targetPosition = target.transform.position;
+
+            if (targetPosition.x > transform.position.x)
+            {
+                enemyState.ChangeState(State.RunR);
+            }
+            else
+            {
+                enemyState.ChangeState(State.RunL);
+            }
+
+            // ========================================================
+            direction = ((Vector3)targetPosition - transform.position).normalized;
+            desired_velocity = direction * speed;
+
+            steering_velocity = desired_velocity - velocity;
+            steering_velocity = steering_velocity / mass;
+
+            velocity += steering_velocity;
         }
-
-        // ========================================================
-        direction = ((Vector3)targetPosition - transform.position).normalized;
-        desired_velocity = direction * speed;
-
-        steering_velocity = desired_velocity - velocity;
-        steering_velocity = steering_velocity / mass;
-
-        velocity += steering_velocity;
       
         //Rotate();
     }
@@ -63,5 +76,21 @@ public class Seek : MonoBehaviour
     {
         float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
         transform.eulerAngles = new Vector3(0, 0, angle);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Collider2D playerRef = Physics2D.OverlapCircle(transform.position, checkRadios, whatIsPlayer);
+
+        if (playerRef)
+        {
+            Gizmos.color = Color.red;
+        }
+        else
+        {
+            Gizmos.color = Color.green;
+        }
+
+        Gizmos.DrawWireSphere(transform.position, checkRadios);
     }
 }

@@ -213,3 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   mass: 100
+  checkRadios: 6
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 8
