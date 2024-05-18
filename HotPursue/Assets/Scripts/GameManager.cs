@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public SO_GameData gameData;
 
     private HudManager hudManager;
+    private GameObject playerRef;
+    private bool playerHurt = false;
+    private int feedbackCount = 0;
 
     void Awake()
     {
@@ -24,6 +27,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerRef = GameObject.FindGameObjectWithTag("Player");
         hudManager = FindObjectOfType<HudManager>();
         hudManager.SetLives(gameData.lives);
         hudManager.SetGold(gameData.gold);
@@ -43,7 +47,44 @@ public class GameManager : MonoBehaviour
 
     public void Damage(int damage)
     {
-        gameData.lives -= damage;
-        hudManager.SetLives(gameData.lives);
+        if (!playerHurt)
+        {
+            Debug.Log("Hurt player");
+            gameData.lives -= damage;
+            hudManager.SetLives(gameData.lives);
+            playerHurt = true;
+            Invoke("ResetHurt", 3.0f);
+            Invoke("DmgFeedBack", 0);
+        }
     }
+
+    private void ResetHurt()
+    {
+        playerHurt = false;
+    }
+
+    private void DmgFeedBack()
+    {
+        SpriteRenderer sr = playerRef.GetComponent<SpriteRenderer>();
+
+        if (feedbackCount % 2 == 0)
+        {
+            sr.color = Color.red;
+        } else
+        {
+            sr.color = Color.white;
+        }
+
+        feedbackCount++;
+
+        if (!(feedbackCount > 11))
+        {
+            Invoke("DmgFeedBack", 0.25f);
+        } else
+        {
+            feedbackCount = 0;
+        }
+    }
+
+
 }

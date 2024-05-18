@@ -13,7 +13,7 @@ public class SO_GameData : ScriptableObject, ISerializationCallbackReceiver
     public void OnAfterDeserialize()
     {
         gold = 0;
-        lives = 5;
+        lives = 10;
     }
 
     public void OnBeforeSerialize()
