@@ -9,10 +9,12 @@ public class SO_GameData : ScriptableObject, ISerializationCallbackReceiver
 {
     public int lives = 10;
     public int gold = 0;
+    public int total = 0;
 
     public void OnAfterDeserialize()
     {
         gold = 0;
+        total = 0;
         lives = 10;
     }
 

@@ -5,8 +5,23 @@ using UnityEngine;
 
 public class HudManager : MonoBehaviour
 {
+    public static HudManager Instance;
     public TextMeshProUGUI lifeTxt;
     public TextMeshProUGUI goldTxt;
+    public TextMeshProUGUI totalGoldTxt;
+
+    void Awake()
+    {
+        if (!Instance)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +41,12 @@ public class HudManager : MonoBehaviour
 
     public void SetLives(int lives)
     {
-        lifeTxt.text = "Lives: " + lives;
+        lifeTxt.text = "Lives:" + lives;
+    }
+
+    public void SetTotal(int total)
+    {
+        totalGoldTxt.text = "Total:" + total;
     }
 
 
