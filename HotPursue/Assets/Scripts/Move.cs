@@ -36,6 +36,7 @@ public class Move : MonoBehaviour
             }
         }
 
-        rb.velocity = new Vector2(xDir, yDir) * speed;
+        //rb.velocity = new Vector2(xDir, yDir) * speed;
+        rb.AddForce(new Vector2(xDir, yDir) * speed);
     }
 }
