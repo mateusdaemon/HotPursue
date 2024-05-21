@@ -17,7 +17,7 @@ public class Move : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         xDir = Input.GetAxis("Horizontal");
         yDir = Input.GetAxis("Vertical");
