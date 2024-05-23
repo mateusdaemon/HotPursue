@@ -32,7 +32,7 @@ public class Seek : MonoBehaviour
         enemyState = GetComponent<EnemyState>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!goToPlayer)
         {
@@ -63,14 +63,14 @@ public class Seek : MonoBehaviour
 
             velocity += steering_velocity;
         }
-      
+        rb.velocity = velocity;
         //Rotate();
     }
 
-    private void FixedUpdate()
-    {
-        rb.velocity = velocity;
-    }
+    //private void FixedUpdate()
+    //{
+        
+    //}
 
     void Rotate()
     {

@@ -6,6 +6,7 @@ public class Collectable : MonoBehaviour
 {
     private GameManager gameManager;
     public int worth;
+    public ParticleSystem particle;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class Collectable : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Instantiate(particle, transform.position, particle.transform.rotation);
             gameManager.AddScore(worth);
             Destroy(gameObject);
         }

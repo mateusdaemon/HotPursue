@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worth: 1
+  particle: {fileID: 3164084542278718695, guid: 0011cdc0b2c29a44bb8d1b1e983264ac, type: 3}
 --- !u!70 &8105862361009270020
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
